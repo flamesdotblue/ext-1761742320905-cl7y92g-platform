@@ -1,28 +1,32 @@
-import { useState } from 'react'
+import React from 'react';
+import Navbar from './components/Navbar.jsx';
+import Hero3D from './components/Hero3D.jsx';
+import DataForm from './components/DataForm.jsx';
+import DataList from './components/DataList.jsx';
+import Footer from './components/Footer.jsx';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
+    <div className="min-h-screen flex flex-col bg-gray-950 text-white">
+      <Navbar />
+      <main className="flex-1">
+        <section className="relative h-[70vh] sm:h-[80vh] w-full">
+          <Hero3D />
+        </section>
+        <section className="container mx-auto px-4 py-10 grid gap-8 md:grid-cols-2">
+          <div className="bg-gray-900/60 border border-gray-800 rounded-xl p-6 backdrop-blur">
+            <h2 className="text-2xl font-semibold mb-4">Add Record</h2>
+            <p className="text-gray-400 mb-6">Submit data to your prototype backend. This writes to a JSON file via a lightweight API.</p>
+            <DataForm />
+          </div>
+          <div className="bg-gray-900/60 border border-gray-800 rounded-xl p-6 backdrop-blur">
+            <h2 className="text-2xl font-semibold mb-4">Records</h2>
+            <p className="text-gray-400 mb-6">Fetched live from the backend API.</p>
+            <DataList />
+          </div>
+        </section>
+      </main>
+      <Footer />
     </div>
-  )
+  );
 }
-
-export default App
